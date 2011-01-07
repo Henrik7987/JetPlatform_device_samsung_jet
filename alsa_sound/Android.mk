@@ -33,7 +33,7 @@ endif
   	libasound \
   	liblog
 
-  LOCAL_MODULE:= alsa.GT-I5700
+  LOCAL_MODULE:= alsa.GT-S8000
 
   include $(BUILD_SHARED_LIBRARY)
 

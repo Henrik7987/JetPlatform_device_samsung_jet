@@ -22,11 +22,13 @@
 # against the traditional rules of inheritance).
 
 # inherit from the proprietary version
--include vendor/samsung/spica/BoardConfigVendor.mk
+-include vendor/samsung/jet/BoardConfigVendor.mk
 
 TARGET_CPU_ABI := armeabi
 TARGET_ARCH_VARIANT := armv6-vfp
 TARGET_ARCH_VARIANT_CPU := arm1176jzf-s
+#TARGET_GLOBAL_CFLAGS += -mtune=arm1176jzf-s -mfpu=vfp
+#TARGET_GLOBAL_CPPFLAGS += -mtune=arm1176jzf-s -mfpu=vfp
 
 TARGET_NO_RECOVERY := true
 TARGET_NO_BOOTLOADER := true
@@ -45,12 +47,13 @@ BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_USES_FFORMAT := true
 BOARD_RECOVERY_IGNORE_BOOTABLES := true
 
-USE_CAMERA_STUB := false
+USE_CAMERA_STUB := true
 
-TARGET_BOOTLOADER_BOARD_NAME := GT-I5700
+TARGET_BOOTLOADER_BOARD_NAME := GT-S8000
 TARGET_BOARD_PLATFORM := s3c6410
 
-BOARD_USES_GENERIC_AUDIO := false
+BOARD_USES_GENERIC_AUDIO := true
+BOARD_USES_ALSA_AUDIO := true
 # commented BOARD_USES_ALSA_AUDIO & BUILD_WITH_ALSA_UTILS: Nexus S drivers, uncommented: ALSA (old) sound drivers
 #BOARD_USES_ALSA_AUDIO := true
 #BUILD_WITH_ALSA_UTILS := true
@@ -58,15 +61,18 @@ BOARD_USES_GENERIC_AUDIO := false
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
 WPA_SUPPLICANT_VERSION      := VER_0_6_X
 BOARD_WLAN_DEVICE           := eth0
-WIFI_DRIVER_MODULE_PATH     := "/lib/modules/dhd.ko"
+WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/dhd.ko"
 WIFI_DRIVER_MODULE_ARG      := "firmware_path=/system/etc/rtecdc.bin nvram_path=/system/etc/nvram.txt"
 WIFI_DRIVER_MODULE_NAME     := "dhd"
 
-BOARD_HAVE_BLUETOOTH     := true
-BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_HAVE_FM_RADIO      := true
+# DISABLED
+BOARD_HAVE_BLUETOOTH     := false
+# DISABLED
+BOARD_HAVE_BLUETOOTH_BCM := false
+# DISABLED
+BOARD_HAVE_FM_RADIO      := false
 
-BOARD_GPS_LIBRARIES := libsecgps libsecril-client
+#BOARD_GPS_LIBRARIES := libsecgps libsecril-client
 
 # vflashbird's camcoder fix
 BUILD_PV_VIDEO_ENCODERS := 1
