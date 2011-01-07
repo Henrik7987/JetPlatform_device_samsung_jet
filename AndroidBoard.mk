@@ -21,4 +21,4 @@
 LOCAL_PATH := $(call my-dir)
 
 # include the non-open-source counterpart to this file
--include vendor/samsung/spica/AndroidBoardVendor.mk
+-include vendor/samsung/jet/AndroidBoardVendor.mk
