@@ -12,5 +12,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-include $(call all-named-subdir-makefiles, libaudio libsensors liblights gps camera)
+include $(call all-named-subdir-makefiles, libaudio libsensors liblights camera)
+#include $(call all-named-subdir-makefiles, libaudio libsensors liblights gps camera)
