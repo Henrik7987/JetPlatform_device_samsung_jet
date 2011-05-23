@@ -11,8 +11,16 @@ DEVICE_PACKAGE_OVERLAYS += device/samsung/jet/overlay
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=240
 
+# Repeat ring tone on incoming calls
+PRODUCT_PROPERTY_OVERRIDES += \
+ro.telephony.call_ring.multiple=false
+
+#
+# GPS config & application from sucka
+#
 PRODUCT_COPY_FILES += \
-        device/common/gps/gps.conf_EU_SUPL:system/etc/gps.conf
+    device/samsung/jet/prebuilt/jet/gps/gps.conf:system/etc/gps.conf \
+    device/samsung/jet/prebuilt/jet/gps/LBSModeApp.apk:system/app/LBSModeApp.apk
 
 # Install the features available on this device.
 PRODUCT_COPY_FILES += \
@@ -20,12 +28,12 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
     frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml
+    frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
 #    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml 
 
 # media config xml file
 PRODUCT_COPY_FILES += \
-    device/samsung/jet/media_profiles.xml:system/etc/media_profiles.xml
+    device/samsung/spica/media_profiles.xml:system/etc/media_profiles.xml
 
 #
 # Copy jet specific prebuilt files
@@ -39,6 +47,7 @@ PRODUCT_COPY_FILES += \
     device/samsung/jet/prebuilt/jet/wifi/libwlservice.so:system/lib/libwlservice.so \
     device/samsung/jet/prebuilt/jet/wifi/nvram.txt:system/etc/nvram.txt \
     device/samsung/jet/prebuilt/jet/wifi/rtecdc.bin:system/etc/rtecdc.bin \
+    device/samsung/jet/prebuilt/jet/wifi/rtecdc_apsta.bin:system/etc/rtecdc_apsta.bin \
     device/samsung/jet/prebuilt/jet/wifi/nvram_mfg.txt:system/etc/nvram_mfg.txt \
     device/samsung/jet/prebuilt/jet/wifi/rtecdc_mfg.bin:system/etc/rtecdc_mfg.bin \
     device/samsung/jet/prebuilt/jet/wifi/bcm_supp.conf:system/etc/bcm_supp.conf \
@@ -60,10 +69,35 @@ PRODUCT_COPY_FILES += \
 #
 PRODUCT_COPY_FILES += \
     device/samsung/jet/prebuilt/jet/fimg-libs/egl.cfg:system/lib/egl/egl.cfg \
+
+#
+# 3D GFX
+#
+ifdef SPICA_WITH_3D
+PRODUCT_COPY_FILES += \
+    device/samsung/jet/prebuilt/jet/3dpack/libopencore_download.so:system/lib/libopencore_download.so \
+    device/samsung/jet/prebuilt/jet/3dpack/libopencore_downloadreg.so:system/lib/libopencore_downloadreg.so \
+    device/samsung/jet/prebuilt/jet/3dpack/libopencore_mp4local.so:system/lib/libopencore_mp4local.so \
+    device/samsung/jet/prebuilt/jet/3dpack/libopencore_mp4localreg.so:system/lib/libopencore_mp4localreg.so \
+    device/samsung/jet/prebuilt/jet/3dpack/libopencore_player.so:system/lib/libopencore_player.so \
+    device/samsung/jet/prebuilt/jet/3dpack/libopencore_rtsp.so:system/lib/libopencore_rtsp.so \
+    device/samsung/jet/prebuilt/jet/3dpack/libopencore_rtspreg.so:system/lib/libopencore_rtspreg.so \
+    device/samsung/jet/prebuilt/jet/3dpack/libskia.so:system/lib/libskia.so \
+    device/samsung/jet/prebuilt/jet/3dpack/libskiagl.so:system/lib/libskiagl.so \
+    device/samsung/jet/prebuilt/jet/3dpack/libstagefright_color_conversion.so:system/lib/libstagefright_color_conversion.so \
+    device/samsung/jet/prebuilt/jet/3dpack/libsurfaceflinger.so:system/lib/libsurfaceflinger.so \
+    device/samsung/jet/prebuilt/jet/3dpack/libsurfaceflinger_client.so:system/lib/libsurfaceflinger_client.so \
+    device/samsung/jet/prebuilt/jet/3dpack/egl/libChunkAlloc.so:system/lib/egl/libChunkAlloc.so \
+    device/samsung/jet/prebuilt/jet/3dpack/egl/libEGL_fimg.so:system/lib/egl/libEGL_fimg.so \
+    device/samsung/jet/prebuilt/jet/3dpack/egl/libGLESv1_CM_fimg.so:system/lib/egl/libGLESv1_CM_fimg.so \
+    device/samsung/jet/prebuilt/jet/3dpack/egl/libGLESv2_fimg.so:system/lib/egl/libGLESv2_fimg.so
+else
+PRODUCT_COPY_FILES += \
     device/samsung/jet/prebuilt/jet/fimg-libs/libChunkAlloc.so:system/lib/egl/libChunkAlloc.so \
     device/samsung/jet/prebuilt/jet/fimg-libs/libEGL_fimg.so:system/lib/egl/libEGL_fimg.so \
     device/samsung/jet/prebuilt/jet/fimg-libs/libGLESv1_CM_fimg.so:system/lib/egl/libGLESv1_CM_fimg.so \
     device/samsung/jet/prebuilt/jet/fimg-libs/libGLESv2_fimg.so:system/lib/egl/libGLESv2_fimg.so
+endif
 
 #
 # Keys
@@ -77,7 +111,7 @@ PRODUCT_COPY_FILES += \
 # Only one left: copybit
 #
 PRODUCT_COPY_FILES += \
-    device/samsung/jet/prebuilt/jet/hw/copybit.GT-S8000.so:system/lib/hw/copybit.GT-S8000.so
+    device/samsung/jet/prebuilt/jet/akmd/akmd:system/bin/akmdso
 
 #
 # Vold
@@ -93,7 +127,6 @@ PRODUCT_COPY_FILES += \
     device/samsung/jet/prebuilt/jet/ril/efsd:system/bin/efsd \
     device/samsung/jet/prebuilt/jet/ril/rilclient-test:system/bin/rilclient-test \
     device/samsung/jet/prebuilt/jet/ril/libsec-ril.so:system/lib/libsec-ril.so
-#    device/samsung/jet/prebuilt/jet/ril/libsecril-client.so:system/lib/libsecril-client.so
 
 #
 # GSM APN list
@@ -113,6 +146,21 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/samsung/jet/prebuilt/jet/samdroidtools/SamdroidTools.apk:system/app/SamdroidTools.apk \
     device/samsung/jet/prebuilt/jet/samdroidtools/libsamdroidtools.so:system/lib/libsamdroidtools.so
+
+#
+# RockPlayer for temporary DivX
+#
+PRODUCT_COPY_FILES += \
+    device/samsung/jet/prebuilt/jet/rockplayer/RockPlayer.apk:system/app/RockPlayer.apk \
+    device/samsung/jet/prebuilt/jet/rockplayer/libcmplayer.so:system/bin/rockplayer/libcmplayer.so \
+    device/samsung/jet/prebuilt/jet/rockplayer/libcmplayer_7.so:system/bin/rockplayer/libcmplayer_7.so \
+    device/samsung/jet/prebuilt/jet/rockplayer/libffmpeg.so:system/bin/rockplayer/libffmpeg.so
+
+#
+# dirty hack for OpenVPN
+#
+PRODUCT_COPY_FILES += \
+    device/samsung/jet/prebuilt/jet/vpn/openvpn.apk:system/app/OpenVPN.apk
 
 #
 # serviceModeApp

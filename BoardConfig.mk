@@ -52,24 +52,20 @@ USE_CAMERA_STUB := true
 TARGET_BOOTLOADER_BOARD_NAME := GT-S8000
 TARGET_BOARD_PLATFORM := s3c6410
 
-BOARD_USES_GENERIC_AUDIO := true
-BOARD_USES_ALSA_AUDIO := true
-# commented BOARD_USES_ALSA_AUDIO & BUILD_WITH_ALSA_UTILS: Nexus S drivers, uncommented: ALSA (old) sound drivers
-#BOARD_USES_ALSA_AUDIO := true
-#BUILD_WITH_ALSA_UTILS := true
+BOARD_USES_GENERIC_AUDIO := false
 
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
 WPA_SUPPLICANT_VERSION      := VER_0_6_X
 BOARD_WLAN_DEVICE           := eth0
+
 WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/dhd.ko"
+WIFI_DRIVER_FW_STA_PATH     := "/system/etc/rtecdc.bin"
+WIFI_DRIVER_FW_AP_PATH      := "/system/etc/rtecdc_apsta.bin"
 WIFI_DRIVER_MODULE_ARG      := "firmware_path=/system/etc/rtecdc.bin nvram_path=/system/etc/nvram.txt"
 WIFI_DRIVER_MODULE_NAME     := "dhd"
 
-# DISABLED
 BOARD_HAVE_BLUETOOTH     := false
-# DISABLED
 BOARD_HAVE_BLUETOOTH_BCM := false
-# DISABLED
 BOARD_HAVE_FM_RADIO      := false
 
 #BOARD_GPS_LIBRARIES := libsecgps libsecril-client
