@@ -2,7 +2,7 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full.mk)
 
-PRODUCT_SPECIFIC_DEFINES += TARGET_PRELINKER_MAP=$(TOP)/vendor/jet/prelink-linux-arm-jet.map
+PRODUCT_SPECIFIC_DEFINES += TARGET_PRELINKER_MAP=$(TOP)/vendor/jetdroid/prelink-linux-arm-jet.map
 
 DEVICE_PACKAGE_OVERLAYS += device/samsung/jet/overlay
 
@@ -33,7 +33,7 @@ PRODUCT_COPY_FILES += \
 
 # media config xml file
 PRODUCT_COPY_FILES += \
-    device/samsung/spica/media_profiles.xml:system/etc/media_profiles.xml
+    device/samsung/jet/media_profiles.xml:system/etc/media_profiles.xml
 
 #
 # Copy jet specific prebuilt files
@@ -73,7 +73,7 @@ PRODUCT_COPY_FILES += \
 #
 # 3D GFX
 #
-ifdef SPICA_WITH_3D
+ifdef JETDROID_WITH_3D
 PRODUCT_COPY_FILES += \
     device/samsung/jet/prebuilt/jet/3dpack/libopencore_download.so:system/lib/libopencore_download.so \
     device/samsung/jet/prebuilt/jet/3dpack/libopencore_downloadreg.so:system/lib/libopencore_downloadreg.so \
@@ -132,7 +132,7 @@ PRODUCT_COPY_FILES += \
 # GSM APN list
 #
 PRODUCT_COPY_FILES += \
-    device/samsung/jet/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml
+    vendor/jetdroid/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml
 
 #
 # Audio
