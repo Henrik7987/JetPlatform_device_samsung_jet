@@ -22,7 +22,7 @@
 # against the traditional rules of inheritance).
 
 # inherit from the proprietary version
--include vendor/samsung/jet/BoardConfigVendor.mk
+-include vendor/jetdroid/BoardConfigVendor.mk
 
 TARGET_CPU_ABI := armeabi
 TARGET_ARCH_VARIANT := armv6-vfp
@@ -47,7 +47,7 @@ BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_USES_FFORMAT := true
 BOARD_RECOVERY_IGNORE_BOOTABLES := true
 
-USE_CAMERA_STUB := true
+USE_CAMERA_STUB := false
 
 TARGET_BOOTLOADER_BOARD_NAME := GT-S8000
 TARGET_BOARD_PLATFORM := s3c6410
@@ -64,8 +64,8 @@ WIFI_DRIVER_FW_AP_PATH      := "/system/etc/rtecdc_apsta.bin"
 WIFI_DRIVER_MODULE_ARG      := "firmware_path=/system/etc/rtecdc.bin nvram_path=/system/etc/nvram.txt"
 WIFI_DRIVER_MODULE_NAME     := "dhd"
 
-BOARD_HAVE_BLUETOOTH     := false
-BOARD_HAVE_BLUETOOTH_BCM := false
+BOARD_HAVE_BLUETOOTH     := true
+BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_HAVE_FM_RADIO      := false
 
 #BOARD_GPS_LIBRARIES := libsecgps libsecril-client
