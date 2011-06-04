@@ -94,9 +94,9 @@ PRODUCT_COPY_FILES += \
     device/samsung/jet/prebuilt/common/xbin/powertop:system/xbin/powertop \
     device/samsung/jet/prebuilt/common/xbin/openvpn-up.sh:system/xbin/openvpn-up.sh
 
-jet_WITH_GOOGLE:=true
+#jet_WITH_GOOGLE:=true
 # I'll always build with gapps :)
-ifdef jet_WITH_GOOGLE
+ifdef JETDROID_WITH_GOOGLE
 
     PRODUCT_COPY_FILES += \
 	vendor/jetdroid/proprietary/CarHomeGoogle.apk:system/app/CarHomeGoogle.apk \
