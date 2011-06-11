@@ -117,7 +117,8 @@ PRODUCT_COPY_FILES += \
 # Vold
 #
 PRODUCT_COPY_FILES += \
-    device/samsung/jet/prebuilt/jet/vold/vold.fstab:system/etc/vold.fstab
+    device/samsung/jet/prebuilt/jet/vold/vold.fstab:system/etc/vold.fstab \
+    device/samsung/jet/prebuilt/jet/vold/vold.conf:system/etc/vold.conf
 
 #
 # RIL
